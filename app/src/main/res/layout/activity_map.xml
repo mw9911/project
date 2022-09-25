@@ -32,8 +32,8 @@
 
         <ImageButton
             android:id="@+id/imgbtn_map1"
-            android:layout_width="54dp"
-            android:layout_height="61dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:adjustViewBounds="true"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"

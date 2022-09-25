@@ -1,47 +1,46 @@
 package com.example.myapplication
 
 import android.graphics.Color
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_map.*
 
 class MapHandling {
-    val SPLITLEN=24
+    val SPLITLEN=36
     val EMAILLEN=18
-    fun setMap(){
-        var playerNum:Int
-    }
     fun getAttractMapString(){
 
     }
     fun getUserColorToIdx(mapString:String,idx:Int) : Int{
-        var tmpIdx=idx-1
-        var tmpUserToken=mapString.chunked(SPLITLEN)
-        var tmpUserIm=tmpUserToken[tmpIdx].split("/")
-        var rtn= Integer.parseInt(tmpUserIm[1])
+        val tmpIdx=idx-1
+        val tmpUserToken=mapString.chunked(SPLITLEN)
+        val tmpUserIm=tmpUserToken[tmpIdx].split("/")
+        val rtn= Integer.parseInt(tmpUserIm[1])
         return rtn
     }
     fun getMapColorToIdx(mapString:String,idx:Int):Int{
-        var tmpIdx=idx-1
-        var tmpUserToken=mapString.chunked(SPLITLEN)
-        var tmpUserIm=tmpUserToken[tmpIdx].split("/")
+        val tmpIdx=idx-1
+        val tmpUserToken=mapString.chunked(SPLITLEN)
+        val tmpUserIm=tmpUserToken[tmpIdx].split("/")
         return Integer.parseInt(tmpUserIm[0])
 
     }
     fun getUserEmailToIdx(mapString:String,idx:Int):String{
-        var tmpIdx=idx-1
-        var tmpUserToken=mapString.chunked(SPLITLEN)
-        var tmpUserIm=tmpUserToken[tmpIdx].split("/","#")
+        val tmpIdx=idx-1
+        val tmpUserToken=mapString.chunked(SPLITLEN)
+        val tmpUserIm=tmpUserToken[tmpIdx].split("/","#")
         return tmpUserIm[2]
     }
     fun UpdateMap(mapString:String,winnerNum:Int,loserNum:Int):String{
-        var rtn:String=""
-        var tmpUserToken=mapString.chunked(SPLITLEN)
-        var tmpWinIdx=winnerNum-1
-        var tmpLoserIdx=loserNum-1
-        var tmpWinIm=tmpUserToken[tmpWinIdx].split("/")
-        var tmpLoseIm=tmpUserToken[tmpLoserIdx].split("/")
-        var tmpE:String =getUserEmailToIdx(mapString,winnerNum)+ "##################"
-        var tmpUserIm=(tmpWinIm[0]+"/"+tmpLoseIm[1]+"/"+tmpE).chunked(SPLITLEN)
+        var rtn:String
+        val tmpUserToken=mapString.chunked(SPLITLEN)
+        val tmpWinIdx=winnerNum-1
+        val tmpLoserIdx=loserNum-1
+        val tmpWinIm=tmpUserToken[tmpWinIdx].split("/")
+        val tmpLoseIm=tmpUserToken[tmpLoserIdx].split("/")
+        val tmpE:String =getUserEmailToIdx(mapString,winnerNum)+ "#############################"
+        val tmpUserIm=(tmpWinIm[0]+"/"+tmpLoseIm[1]+"/"+tmpE).chunked(SPLITLEN)
         var tmpidx=0
+        rtn=""
         while(tmpidx<25) {
             if (tmpidx != tmpLoserIdx)
                 rtn = rtn + tmpUserToken[tmpidx]
@@ -59,6 +58,28 @@ class MapHandling {
                 rtn++
         }
 
+        return rtn
+    }
+    fun getAttackString(mapString:String):String{
+        val token=mapString.chunked(SPLITLEN*25)
+        return token[1]
+    }
+
+    fun changeAttackString(mapString:String,aIdx:Int,bIdx:Int,type:Int):String{
+        val tmptoken=mapString.chunked(SPLITLEN*25)
+        val token=tmptoken[1].chunked(1)
+        var rtn=tmptoken[0]
+
+        for(i in 0..24){
+            val idx=i+1
+            if(aIdx==getMapColorToIdx(mapString,idx)){
+                rtn=rtn+type.toString()
+            }else if(bIdx==getMapColorToIdx(mapString,idx)){
+                rtn=rtn+type.toString()
+            }else{
+                rtn=rtn+token[i]
+            }
+        }
         return rtn
     }
 }

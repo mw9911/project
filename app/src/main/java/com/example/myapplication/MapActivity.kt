@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_map.*
 import kotlinx.android.synthetic.main.activity_map.imgbtn_map1
 import kotlinx.android.synthetic.main.activity_map.imgbtn_map10
@@ -44,15 +45,15 @@ class MapActivity : AppCompatActivity() {
         R.color.color11,R.color.color12,R.color.color13,R.color.color14,R.color.color15,
         R.color.color16,R.color.color17,R.color.color18,R.color.color19,R.color.color20,
         R.color.color21,R.color.color22,R.color.color23,R.color.color24,R.color.color25)
-    val firstS:String="01/01/1@naver.com#######02/02/2@naver.com#######03/03/3@naver.com#######04/04/4@naver.com#######05/05/5@naver.com#######06/06/6@naver.com#######07/07/7@naver.com#######08/08/8@naver.com#######09/09/9@naver.com#######10/10/10@naver.com######11/11/11@naver.com######12/12/12@naver.com######13/13/13@naver.com######14/14/14@naver.com######15/15/15@naver.com######16/16/16@naver.com######17/17/17@naver.com######18/18/18@naver.com######19/19/19@naver.com######20/20/20@naver.com######21/21/21@naver.com######22/22/22@naver.com######23/23/23@naver.com######24/24/24@naver.com######25/25/25@naver.com######"
-    val SPLITLEN: Int = 24
+   val SPLITLEN: Int = 36
     val EMAILLEN : Int=20
     var userId:Int=1
     var landNum:Int=25
     var playerNum:Int=5
     var MAX_LANDNUM=25
-    fun setMap(mapString: String,playerNum:Int,landNum:Int){
-        var imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
+    var mapString=""
+    fun setMap(landNum:Int){
+        val imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
         imgBtnArr[1]=imgbtn_map1
         imgBtnArr[2]=imgbtn_map2
         imgBtnArr[3]=imgbtn_map3
@@ -82,8 +83,8 @@ class MapActivity : AppCompatActivity() {
             imgBtnArr[i].visibility= View.INVISIBLE
         }
     }
-    fun ShowMap(mapString:String,colorType:Int){
-        var imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
+    fun showMap(mapString:String,colorType:Int){
+        val imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
         imgBtnArr[1]=imgbtn_map1
         imgBtnArr[2]=imgbtn_map2
         imgBtnArr[3]=imgbtn_map3
@@ -131,7 +132,7 @@ class MapActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
-        var imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
+        val imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
         imgBtnArr[1]=imgbtn_map1
         imgBtnArr[2]=imgbtn_map2
         imgBtnArr[3]=imgbtn_map3
@@ -157,69 +158,65 @@ class MapActivity : AppCompatActivity() {
         imgBtnArr[23]=imgbtn_map23
         imgBtnArr[24]=imgbtn_map24
         imgBtnArr[25]=imgbtn_map25
-        var mapString=firstS
-        var battleWinner:Int
-        var battleLoser:Int
         var colorType=1
-        if(intent.hasExtra("playerNum")) {
-            playerNum = intent.getIntExtra("playerNum", 0)
-        }
-        if(intent.hasExtra("landNum")) {
-            landNum = intent.getIntExtra("landNum", 0)
-        }
-        if(intent.hasExtra("start")){
-            var tmpCnt =Array<Int>(30){0}
-            for(i in 1..26){
-                tmpCnt[i]=0
-            }
-            val secureRandom=SecureRandom()
-            var tmpIdx : Int
-            for(i in playerNum+1..landNum){
-                while(true){
-                    tmpIdx=secureRandom.nextInt(playerNum)+1
-                    if(tmpCnt[tmpIdx]<(landNum/playerNum)-1){
-                        mapString=MapHandling().UpdateMap(mapString,tmpIdx,i)
-                        tmpCnt[tmpIdx]++
-                        break
+        val db= FirebaseDatabase.getInstance().getReference("test")
+        db.child("ttt").get().addOnSuccessListener {
+            landNum=it.child("landNum").value.toString().toInt()
+            playerNum=it.child("playerNum").value.toString().toInt()
+            mapString=it.child("mapString").value.toString()
+            userId=it.child("userId").value.toString().toInt()
+            if(intent.hasExtra("start")){
+                val tmpCnt =Array<Int>(30){0}
+                for(i in 1..26){
+                    tmpCnt[i]=0
+                }
+                val secureRandom=SecureRandom()
+                var tmpIdx : Int
+                for(i in playerNum+1..landNum){
+                    while(true){
+                        tmpIdx=secureRandom.nextInt(playerNum)+1
+                        if(tmpCnt[tmpIdx]<(landNum/playerNum)-1){
+                            mapString=MapHandling().UpdateMap(mapString,tmpIdx,i)
+                            tmpCnt[tmpIdx]++
+                            break
+                        }
                     }
                 }
+                db.child("ttt").child("mapString").setValue(mapString)
             }
-        }
-        if(intent.hasExtra("mapString")){
-            mapString=intent.getStringExtra("mapString").toString()
-        }
-        testButton1.setOnClickListener {
-            userId= Integer.parseInt(testEdit1.text.toString())
-            testText1.setText("Player : "+ testEdit1.text.toString())
-            false
-        }
-        setMap(mapString,playerNum,landNum)
-        ShowMap(mapString,colorType)
-        color_change_btn.setOnClickListener {
-            colorType=colorType%2+1
-            if(colorType==1){
-                color_change_btn.text="색 벗기기"
-                ShowMap(mapString,colorType)
+            setMap(landNum)
+            showMap(mapString,colorType)
+            testButton1.setOnClickListener {
+                userId= Integer.parseInt(testEdit1.text.toString())
+                testText1.setText("Player : "+ testEdit1.text.toString())
+                false
             }
-            if(colorType==2){
-                color_change_btn.text="색 입히기"
-                ShowMap(mapString,colorType)
+            color_change_btn.setOnClickListener {
+                colorType=colorType%2+1
+                if(colorType==1){
+                    color_change_btn.text="색 벗기기"
+                    showMap(mapString,colorType)
+                }
+                if(colorType==2){
+                    color_change_btn.text="색 입히기"
+                    showMap(mapString,colorType)
+                }
             }
-        }
-        attack_btn_intent.setOnClickListener {
-            if(MapHandling().getLandCount(mapString,userId)==0){
-                Toast.makeText(this,"영역이 존재하지 않아 공격 할 수 없습니다.",Toast.LENGTH_SHORT).show()
-            }
-            else {
-                val intent = Intent(this, AtcMapActivity::class.java)
-                intent.putExtra("userId", userId)
-                intent.putExtra("mapString", mapString)
-                intent.putExtra("playerNum",playerNum)
-                intent.putExtra("landNum",landNum)
-                startActivity(intent)
-                finish()
+            attack_btn_intent.setOnClickListener {
+                Toast.makeText(this,mapString,Toast.LENGTH_SHORT).show()
+                if (MapHandling().getLandCount(mapString, userId) == 0) {
+                    Toast.makeText(this, "영역이 존재하지 않아 공격 할 수 없습니다.", Toast.LENGTH_SHORT).show()
+                } else { val intent = Intent(this, AtcMapActivity::class.java)
+                            intent.putExtra("userId", userId)
+                    intent.putExtra("mapString", mapString)
+                    intent.putExtra("playerNum", playerNum)
+                    intent.putExtra("landNum", landNum)
+                    startActivity(intent)
+                    finish()
+                }
             }
         }
     }
 }
+
 

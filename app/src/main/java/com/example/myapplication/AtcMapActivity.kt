@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_atc_map.*
 import kotlinx.android.synthetic.main.activity_atc_map.imgbtn_map1
 import kotlinx.android.synthetic.main.activity_atc_map.imgbtn_map10
@@ -46,8 +47,8 @@ class AtcMapActivity : AppCompatActivity() {
     var playerNum :Int=1
     var landNum:Int=1
     fun landColorTypeCheck(mapString:String, attackMapString: String,userId: Int,chkIdx:Int) : Int{
-        var attackIm=attackMapString.chunked(1)
-        var tmp= Integer.parseInt(attackIm[chkIdx-1])
+        val attackIm=attackMapString.chunked(1)
+        val tmp= Integer.parseInt(attackIm[chkIdx-1])
 
         if(MapHandling().getMapColorToIdx(mapString,userId)==MapHandling().getMapColorToIdx(mapString,chkIdx))
             return 2
@@ -56,64 +57,18 @@ class AtcMapActivity : AppCompatActivity() {
         return 1
     }
     fun setMap(){
-        var imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
-        imgBtnArr[1]=imgbtn_map1
-        imgBtnArr[2]=imgbtn_map2
-        imgBtnArr[3]=imgbtn_map3
-        imgBtnArr[4]=imgbtn_map4
-        imgBtnArr[5]=imgbtn_map5
-        imgBtnArr[6]=imgbtn_map6
-        imgBtnArr[7]=imgbtn_map7
-        imgBtnArr[8]=imgbtn_map8
-        imgBtnArr[9]=imgbtn_map9
-        imgBtnArr[10]=imgbtn_map10
-        imgBtnArr[11]=imgbtn_map11
-        imgBtnArr[12]=imgbtn_map12
-        imgBtnArr[13]=imgbtn_map13
-        imgBtnArr[14]=imgbtn_map14
-        imgBtnArr[15]=imgbtn_map15
-        imgBtnArr[16]=imgbtn_map16
-        imgBtnArr[17]=imgbtn_map17
-        imgBtnArr[18]=imgbtn_map18
-        imgBtnArr[19]=imgbtn_map19
-        imgBtnArr[20]=imgbtn_map20
-        imgBtnArr[21]=imgbtn_map21
-        imgBtnArr[22]=imgbtn_map22
-        imgBtnArr[23]=imgbtn_map23
-        imgBtnArr[24]=imgbtn_map24
-        imgBtnArr[25]=imgbtn_map25
+        val imgBtnArr = arrayOf(imgbtn_map1,imgbtn_map2,imgbtn_map3,imgbtn_map4,imgbtn_map5,imgbtn_map6,imgbtn_map7,imgbtn_map8,imgbtn_map9,imgbtn_map10,
+            imgbtn_map11,imgbtn_map12,imgbtn_map13,imgbtn_map14,imgbtn_map15,imgbtn_map16,imgbtn_map17,imgbtn_map18,imgbtn_map19,imgbtn_map20,
+            imgbtn_map21,imgbtn_map22,imgbtn_map23,imgbtn_map24,imgbtn_map25)
         for(i in landNum+1 .. 25){
             imgBtnArr[i].visibility=View.INVISIBLE
         }
     }
     fun showAtcMap(mapString:String, attackMapString : String, userId:Int, colorType:Int){
-        var landColorType= Array<Int>(30){0}
-        var imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
-        imgBtnArr[1]=imgbtn_map1
-        imgBtnArr[2]=imgbtn_map2
-        imgBtnArr[3]=imgbtn_map3
-        imgBtnArr[4]=imgbtn_map4
-        imgBtnArr[5]=imgbtn_map5
-        imgBtnArr[6]=imgbtn_map6
-        imgBtnArr[7]=imgbtn_map7
-        imgBtnArr[8]=imgbtn_map8
-        imgBtnArr[9]=imgbtn_map9
-        imgBtnArr[10]=imgbtn_map10
-        imgBtnArr[11]=imgbtn_map11
-        imgBtnArr[12]=imgbtn_map12
-        imgBtnArr[13]=imgbtn_map13
-        imgBtnArr[14]=imgbtn_map14
-        imgBtnArr[15]=imgbtn_map15
-        imgBtnArr[16]=imgbtn_map16
-        imgBtnArr[17]=imgbtn_map17
-        imgBtnArr[18]=imgbtn_map18
-        imgBtnArr[19]=imgbtn_map19
-        imgBtnArr[20]=imgbtn_map20
-        imgBtnArr[21]=imgbtn_map21
-        imgBtnArr[22]=imgbtn_map22
-        imgBtnArr[23]=imgbtn_map23
-        imgBtnArr[24]=imgbtn_map24
-        imgBtnArr[25]=imgbtn_map25
+        val landColorType= Array<Int>(30){0}
+        val imgBtnArr = arrayOf(imgbtn_map1,imgbtn_map2,imgbtn_map3,imgbtn_map4,imgbtn_map5,imgbtn_map6,imgbtn_map7,imgbtn_map8,imgbtn_map9,imgbtn_map10,
+            imgbtn_map11,imgbtn_map12,imgbtn_map13,imgbtn_map14,imgbtn_map15,imgbtn_map16,imgbtn_map17,imgbtn_map18,imgbtn_map19,imgbtn_map20,
+            imgbtn_map21,imgbtn_map22,imgbtn_map23,imgbtn_map24,imgbtn_map25)
         if(colorType==1) {
             for(curIdx in 1..25) {
                 landColorType[curIdx]=landColorTypeCheck(mapString,attackMapString,userId,curIdx)
@@ -135,92 +90,52 @@ class AtcMapActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_atc_map)
-        var imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
-        imgBtnArr[1]=imgbtn_map1
-        imgBtnArr[2]=imgbtn_map2
-        imgBtnArr[3]=imgbtn_map3
-        imgBtnArr[4]=imgbtn_map4
-        imgBtnArr[5]=imgbtn_map5
-        imgBtnArr[6]=imgbtn_map6
-        imgBtnArr[7]=imgbtn_map7
-        imgBtnArr[8]=imgbtn_map8
-        imgBtnArr[9]=imgbtn_map9
-        imgBtnArr[10]=imgbtn_map10
-        imgBtnArr[11]=imgbtn_map11
-        imgBtnArr[12]=imgbtn_map12
-        imgBtnArr[13]=imgbtn_map13
-        imgBtnArr[14]=imgbtn_map14
-        imgBtnArr[15]=imgbtn_map15
-        imgBtnArr[16]=imgbtn_map16
-        imgBtnArr[17]=imgbtn_map17
-        imgBtnArr[18]=imgbtn_map18
-        imgBtnArr[19]=imgbtn_map19
-        imgBtnArr[20]=imgbtn_map20
-        imgBtnArr[21]=imgbtn_map21
-        imgBtnArr[22]=imgbtn_map22
-        imgBtnArr[23]=imgbtn_map23
-        imgBtnArr[24]=imgbtn_map24
-        imgBtnArr[25]=imgbtn_map25
+        val db=FirebaseDatabase.getInstance().getReference("test")
+        val imgBtnArr = arrayOf(imgbtn_map1,imgbtn_map2,imgbtn_map3,imgbtn_map4,imgbtn_map5,imgbtn_map6,imgbtn_map7,imgbtn_map8,imgbtn_map9,imgbtn_map10,
+            imgbtn_map11,imgbtn_map12,imgbtn_map13,imgbtn_map14,imgbtn_map15,imgbtn_map16,imgbtn_map17,imgbtn_map18,imgbtn_map19,imgbtn_map20,
+            imgbtn_map21,imgbtn_map22,imgbtn_map23,imgbtn_map24,imgbtn_map25)
         var colorType=1
         for(i in 1..25){
             imgBtnArr[i].setOnClickListener(AttackMapButtonListener())
         }
-        if(intent.hasExtra("userId")){
-            userId=intent.getIntExtra("userId",1)
-        }
-        if(intent.hasExtra("mapString")) {
-            mapString = intent.getStringExtra("mapString").toString()
-        }
-        if(intent.hasExtra("playerNum")){
-            playerNum=intent.getIntExtra("playerNum",0)
-        }
-        if(intent.hasExtra("landNum")){
-            landNum=intent.getIntExtra("landNum",0)
-        }
-        setMap()
-        showAtcMap(mapString,attackMapString,userId,colorType)
-        color_change_btn.setOnClickListener {
-            colorType=colorType%2+1
-            if(colorType==1){
-                color_change_btn.text="색 벗기기"
-                showAtcMap(mapString,attackMapString,userId,colorType)
+        db.child("ttt").get().addOnSuccessListener {
+            userId = it.child("userId").value.toString().toInt()
+            mapString = it.child("mapString").value.toString()
+            playerNum = it.child("playerNum").value.toString().toInt()
+            landNum = it.child("landNum").value.toString().toInt()
+            setMap()
+            showAtcMap(mapString, attackMapString, userId, colorType)
+            color_change_btn.setOnClickListener {
+                colorType=colorType%2+1
+                if(colorType==1){
+                    color_change_btn.text="색 벗기기"
+                    showAtcMap(mapString,attackMapString,userId,colorType)
+                }
+                if(colorType==2){
+                    color_change_btn.text="색 입히기"
+                    showAtcMap(mapString,attackMapString,userId,colorType)
+                }
             }
-            if(colorType==2){
-                color_change_btn.text="색 입히기"
-                showAtcMap(mapString,attackMapString,userId,colorType)
+            back_btn_intent.setOnClickListener {
+                val intent= Intent(this, MapActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
-        back_btn_intent.setOnClickListener {
-            val intent= Intent(this, MapActivity::class.java)
-            intent.putExtra("mapString",mapString)
-            intent.putExtra("playerNum",playerNum)
-            intent.putExtra("landNum",landNum)
-            startActivity(intent)
-            finish()
-        }
+
     }
     inner class AttackMapButtonListener : View.OnClickListener{
         override fun onClick(v:View?) {
-            val intent= Intent(this@AtcMapActivity, ChoiceMapActivity::class.java)
-            var bIntent= Intent(this@AtcMapActivity, MapActivity::class.java)
+            val intent= Intent(this@AtcMapActivity, GameActivity::class.java)
+            val bIntent= Intent(this@AtcMapActivity, MapActivity::class.java)
             val dlg = AttackChoiceDialog(this@AtcMapActivity)
-            var imgNum:Int=0
+            var imgNum:Int
+            imgNum=0
+            val db=FirebaseDatabase.getInstance().getReference("test")
             dlg.setOnOKClickedListener {
                 Toast.makeText(this@AtcMapActivity,"공격하였습니다",Toast.LENGTH_SHORT).show()
-                var ran:Int=(10*Math.random()).toInt()
 
-                var win:Int=userId
-                var lose:Int=imgNum
-                if(ran==1){
-                    win=imgNum
-                    lose=userId
-                }
-
-                intent.putExtra("winnerId",win)
-                intent.putExtra("loserId",lose)
-                intent.putExtra("mapString",mapString)
-                intent.putExtra("playerNum",playerNum)
-                intent.putExtra("landNum",landNum)
+                db.child("ttt").child("opUserId").setValue(imgNum)
                 startActivity(intent)
                 finish()
             }//예 클릭시 실행
@@ -254,9 +169,6 @@ class AtcMapActivity : AppCompatActivity() {
             val landTypeNum=landColorTypeCheck(mapString,attackMapString,userId,imgNum)
             if(landTypeNum==0){
                 Toast.makeText(this@AtcMapActivity,"현재 전투 중 입니다.",Toast.LENGTH_SHORT).show()
-                bIntent.putExtra("mapString",mapString)
-                bIntent.putExtra("playerNum",playerNum)
-                bIntent.putExtra("landNum",landNum)
                 startActivity(bIntent)
                 finish()
             }else if(landTypeNum==1){
@@ -264,9 +176,6 @@ class AtcMapActivity : AppCompatActivity() {
             }
             else{
                 Toast.makeText(this@AtcMapActivity,"본인 땅은 공격할 수 없습니다.",Toast.LENGTH_SHORT).show()
-                bIntent.putExtra("mapString",mapString)
-                bIntent.putExtra("playerNum",playerNum)
-                bIntent.putExtra("landNum",landNum)
                 startActivity(bIntent)
                 finish()
             }

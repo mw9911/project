@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_atc_map.*
 import kotlinx.android.synthetic.main.activity_choice_map.*
 import kotlinx.android.synthetic.main.activity_choice_map.color_change_btn
@@ -37,6 +38,7 @@ import kotlinx.android.synthetic.main.activity_choice_map.imgbtn_map6
 import kotlinx.android.synthetic.main.activity_choice_map.imgbtn_map7
 import kotlinx.android.synthetic.main.activity_choice_map.imgbtn_map8
 import kotlinx.android.synthetic.main.activity_choice_map.imgbtn_map9
+import kotlinx.android.synthetic.main.activity_main.*
 
 class ChoiceMapActivity : AppCompatActivity() {
     var mapString:String=""
@@ -50,7 +52,7 @@ class ChoiceMapActivity : AppCompatActivity() {
         return 0
     }
     fun setMap(){
-        var imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
+        val imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
         imgBtnArr[1]=imgbtn_map1
         imgBtnArr[2]=imgbtn_map2
         imgBtnArr[3]=imgbtn_map3
@@ -81,8 +83,8 @@ class ChoiceMapActivity : AppCompatActivity() {
         }
     }
     fun showChoiceMap(colorType:Int){
-        var landColorType= Array<Int>(30){0}
-        var imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
+        val landColorType= Array<Int>(30){0}
+        val imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
         imgBtnArr[1]=imgbtn_map1
         imgBtnArr[2]=imgbtn_map2
         imgBtnArr[3]=imgbtn_map3
@@ -129,7 +131,7 @@ class ChoiceMapActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choice_map)
-        var imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
+        val imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
         imgBtnArr[1]=imgbtn_map1
         imgBtnArr[2]=imgbtn_map2
         imgBtnArr[3]=imgbtn_map3
@@ -155,50 +157,43 @@ class ChoiceMapActivity : AppCompatActivity() {
         imgBtnArr[23]=imgbtn_map23
         imgBtnArr[24]=imgbtn_map24
         imgBtnArr[25]=imgbtn_map25
-        if(intent.hasExtra("loserId")){
-            loserId=intent.getIntExtra("loserId",0)
-        }
-        if(intent.hasExtra("winnerId")){
-            winnerId=intent.getIntExtra("winnerId",0)
-        }
-        if(intent.hasExtra("mapString")){
-            mapString=intent.getStringExtra("mapString").toString()
-        }
-        if(intent.hasExtra("playerNum")){
-            playerNum=intent.getIntExtra("playerNum",0)
-        }
-        if(intent.hasExtra("landNum")){
-            landNum=intent.getIntExtra("landNum",0)
-        }
-        var colorType=1
-        setMap()
-        showChoiceMap(colorType)
-        color_change_btn.setOnClickListener {
-            colorType=colorType%2+1
-            if(colorType==1){
-                color_change_btn.text="색 벗기기"
-                showChoiceMap(colorType)
+        val db=FirebaseDatabase.getInstance().getReference("test")
+        db.child("ttt").get().addOnSuccessListener {
+            loserId = it.child("loserId").value.toString().toInt()
+            winnerId = it.child("winnerId").value.toString().toInt()
+            mapString = it.child("mapString").value.toString()
+            playerNum = it.child("playerNum").value.toString().toInt()
+            landNum = it.child("landNum").value.toString().toInt()
+            var colorType = 1
+            setMap()
+            showChoiceMap(colorType)
+            color_change_btn.setOnClickListener {
+                colorType = colorType % 2 + 1
+                if (colorType == 1) {
+                    color_change_btn.text = "색 벗기기"
+                    showChoiceMap(colorType)
+                }
+                if (colorType == 2) {
+                    color_change_btn.text = "색 입히기"
+                    showChoiceMap(colorType)
+                }
             }
-            if(colorType==2){
-                color_change_btn.text="색 입히기"
-                showChoiceMap(colorType)
+            for (i in 1..25) {
+                imgBtnArr[i].setOnClickListener(ChoiceMapButtonListener())
             }
-        }
-        for(i in 1..25){
-            imgBtnArr[i].setOnClickListener(ChoiceMapButtonListener())
         }
     }
     inner class ChoiceMapButtonListener : View.OnClickListener{
         override fun onClick(v:View?) {
             val intent= Intent(this@ChoiceMapActivity, MapActivity::class.java)
             val dlg = AttackChoiceDialog(this@ChoiceMapActivity)
-            var imgNum:Int=0
+            var imgNum:Int
+            imgNum=0
+            val db= FirebaseDatabase.getInstance().getReference("test")
             dlg.setOnOKClickedListener {
                 Toast.makeText(this@ChoiceMapActivity,"선택하였습니다.",Toast.LENGTH_SHORT).show()
                 mapString=MapHandling().UpdateMap(mapString,winnerId,imgNum)
-                intent.putExtra("mapString",mapString)
-                intent.putExtra("playerNum",playerNum)
-                intent.putExtra("landNum",landNum)
+                db.child("ttt").child("mapString").setValue(mapString)
                 startActivity(intent)
                 finish()
             }//예 클릭시 실행

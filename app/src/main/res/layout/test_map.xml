@@ -1,360 +1,340 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <ImageButton
-        android:id="@+id/imgbtn_map24"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="80dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageButton
+            android:id="@+id/imgbtn_map24"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="80dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map25"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="76dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet25"
-        app:layout_constraintStart_toEndOf="@+id/imgbtn_map22"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/imgbtn_map25"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="76dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet25"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map22"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map22"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="96dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet22"
-        app:layout_constraintStart_toEndOf="@+id/imgbtn_map24"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/imgbtn_map22"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="96dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet22"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map24"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map1"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtn_map24" />
+        <ImageButton
+            android:id="@+id/imgbtn_map1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="28dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map24" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map7"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="20dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet7"
-        app:layout_constraintStart_toEndOf="@+id/imgbtn_map19"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtn_map22" />
+        <ImageButton
+            android:id="@+id/imgbtn_map7"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet7"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map19"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map22" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map18"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="32dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet18"
-        app:layout_constraintStart_toEndOf="@+id/imgbtn_map7"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtn_map25" />
+        <ImageButton
+            android:id="@+id/imgbtn_map18"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="32dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet18"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map7"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map25" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map19"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="28dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet19"
-        app:layout_constraintStart_toEndOf="@+id/imgbtn_map1"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtn_map22" />
+        <ImageButton
+            android:id="@+id/imgbtn_map19"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="28dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet19"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map1"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map22" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map3"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet3"
-        app:layout_constraintStart_toEndOf="@+id/imgbtn_map13"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtn_map18" />
+        <ImageButton
+            android:id="@+id/imgbtn_map3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet3"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map13"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map18" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map6"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="48dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet6"
-        app:layout_constraintStart_toEndOf="@+id/imgbtn_map23"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtn_map19" />
+        <ImageButton
+            android:id="@+id/imgbtn_map6"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="48dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet6"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map23"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map19" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map13"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet13"
-        app:layout_constraintStart_toEndOf="@+id/imgbtn_map6"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtn_map7" />
+        <ImageButton
+            android:id="@+id/imgbtn_map13"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="28dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet13"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map6"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map7" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map23"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="24dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet23"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtn_map1" />
+        <ImageButton
+            android:id="@+id/imgbtn_map23"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="24dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet23"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map1" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map5"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="36dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet5"
-        app:layout_constraintStart_toEndOf="@+id/imgbtn_map17"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtn_map13" />
+        <ImageButton
+            android:id="@+id/imgbtn_map5"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="36dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet5"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map17"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map13" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map12"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtn_map23" />
+        <ImageButton
+            android:id="@+id/imgbtn_map12"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map23" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map17"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="20dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet17"
-        app:layout_constraintStart_toEndOf="@+id/imgbtn_map12"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtn_map6" />
+        <ImageButton
+            android:id="@+id/imgbtn_map17"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet17"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map12"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map6" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map20"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet20"
-        app:layout_constraintStart_toEndOf="@+id/imgbtn_map5"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtn_map3" />
+        <ImageButton
+            android:id="@+id/imgbtn_map20"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet20"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map5"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map3" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map4"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="24dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtn_map12" />
+        <ImageButton
+            android:id="@+id/imgbtn_map4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="24dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map12" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map8"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="4dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet8"
-        app:layout_constraintStart_toEndOf="@+id/imgbtn_map14"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtn_map20" />
+        <ImageButton
+            android:id="@+id/imgbtn_map8"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="4dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet8"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map14"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map20" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map14"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="32dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet14"
-        app:layout_constraintStart_toEndOf="@+id/imgbtn_map4"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtn_map5" />
+        <ImageButton
+            android:id="@+id/imgbtn_map14"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="24dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet14"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map4"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map5" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map15"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet15"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtn_map4"
-        tools:layout_editor_absoluteX="205dp" />
+        <ImageButton
+            android:id="@+id/imgbtn_map15"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="36dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map4" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map2"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet2"
-        tools:layout_editor_absoluteX="174dp" />
+        <ImageButton
+            android:id="@+id/imgbtn_map2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="104dp"
+            android:layout_marginTop="24dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet2"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map9"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map8" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_map9"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet9"
-        tools:layout_editor_absoluteX="144dp" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="409dp"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="409dp"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent">
+        <ImageButton
+            android:id="@+id/imgbtn_map9"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="36dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/planet9"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map15"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map14" />
 
         <ImageButton
             android:id="@+id/imgbtn_map10"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
             android:adjustViewBounds="true"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            android:src="@drawable/planet10" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="409dp"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent">
+            android:src="@drawable/planet10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map15" />
 
         <ImageButton
             android:id="@+id/imgbtn_map11"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="20dp"
             android:adjustViewBounds="true"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            android:src="@drawable/planet11" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="409dp"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent">
+            android:src="@drawable/planet11"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map16"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map9" />
 
         <ImageButton
             android:id="@+id/imgbtn_map16"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="28dp"
             android:adjustViewBounds="true"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            android:src="@drawable/planet16" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="409dp"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent">
+            android:src="@drawable/planet16"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map10"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map9" />
 
         <ImageButton
             android:id="@+id/imgbtn_map21"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="32dp"
             android:adjustViewBounds="true"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            android:src="@drawable/planet21" />
+            android:src="@drawable/planet21"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_map11"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_map2" />
 
-        =
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
