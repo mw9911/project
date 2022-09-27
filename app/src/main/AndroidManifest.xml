@@ -16,10 +16,10 @@
         <activity
             android:name=".GameActivity"
             android:exported="false" />
-        <Dialog
+        <activity
             android:name=".LandNumChoiceDialog"
             android:exported="false" />
-        <Dialog
+        <activity
             android:name=".MapChoiceDialog"
             android:exported="false" />
         <activity

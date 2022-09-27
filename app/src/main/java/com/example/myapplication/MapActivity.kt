@@ -186,11 +186,6 @@ class MapActivity : AppCompatActivity() {
             }
             setMap(landNum)
             showMap(mapString,colorType)
-            testButton1.setOnClickListener {
-                userId= Integer.parseInt(testEdit1.text.toString())
-                testText1.setText("Player : "+ testEdit1.text.toString())
-                false
-            }
             color_change_btn.setOnClickListener {
                 colorType=colorType%2+1
                 if(colorType==1){
