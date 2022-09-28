@@ -27,6 +27,8 @@ class GameActivity : AppCompatActivity() {
                 win=opUserId
                 lose=userId
             }
+            intent.putExtra("winnerId",win)
+            intent.putExtra("loserId",lose)
             db.child("ttt").child("winnerId").setValue(win)
             db.child("ttt").child("loserId").setValue(lose)
             startActivity(intent)

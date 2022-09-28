@@ -28,6 +28,7 @@ class WaitActivity : AppCompatActivity() {
             dlg.setOnOKClickedListener {content->
                 intent.putExtra("start","")
                 startActivity(intent)
+                overridePendingTransition(0,0)
             }
             //예 클릭시 실행
             dlg.start()

@@ -39,6 +39,7 @@ import kotlinx.android.synthetic.main.activity_choice_map.imgbtn_map7
 import kotlinx.android.synthetic.main.activity_choice_map.imgbtn_map8
 import kotlinx.android.synthetic.main.activity_choice_map.imgbtn_map9
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_map.*
 
 class ChoiceMapActivity : AppCompatActivity() {
     var mapString:String=""
@@ -52,64 +53,18 @@ class ChoiceMapActivity : AppCompatActivity() {
         return 0
     }
     fun setMap(){
-        val imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
-        imgBtnArr[1]=imgbtn_map1
-        imgBtnArr[2]=imgbtn_map2
-        imgBtnArr[3]=imgbtn_map3
-        imgBtnArr[4]=imgbtn_map4
-        imgBtnArr[5]=imgbtn_map5
-        imgBtnArr[6]=imgbtn_map6
-        imgBtnArr[7]=imgbtn_map7
-        imgBtnArr[8]=imgbtn_map8
-        imgBtnArr[9]=imgbtn_map9
-        imgBtnArr[10]=imgbtn_map10
-        imgBtnArr[11]=imgbtn_map11
-        imgBtnArr[12]=imgbtn_map12
-        imgBtnArr[13]=imgbtn_map13
-        imgBtnArr[14]=imgbtn_map14
-        imgBtnArr[15]=imgbtn_map15
-        imgBtnArr[16]=imgbtn_map16
-        imgBtnArr[17]=imgbtn_map17
-        imgBtnArr[18]=imgbtn_map18
-        imgBtnArr[19]=imgbtn_map19
-        imgBtnArr[20]=imgbtn_map20
-        imgBtnArr[21]=imgbtn_map21
-        imgBtnArr[22]=imgbtn_map22
-        imgBtnArr[23]=imgbtn_map23
-        imgBtnArr[24]=imgbtn_map24
-        imgBtnArr[25]=imgbtn_map25
-        for(i in landNum+1 .. 25){
-            imgBtnArr[i].visibility=View.INVISIBLE
+        val imgBtnArr = arrayOf(imgbtn_map1,imgbtn_map1,imgbtn_map2,imgbtn_map3,imgbtn_map4,imgbtn_map5,imgbtn_map6,imgbtn_map7,imgbtn_map8,imgbtn_map9,imgbtn_map10,
+            imgbtn_map11,imgbtn_map12,imgbtn_map13,imgbtn_map14,imgbtn_map15,imgbtn_map16,imgbtn_map17,imgbtn_map18,imgbtn_map19,imgbtn_map20,
+            imgbtn_map21,imgbtn_map22,imgbtn_map23,imgbtn_map24,imgbtn_map25)
+        for(i in 1 .. landNum){
+            imgBtnArr[i].visibility=View.VISIBLE
         }
     }
     fun showChoiceMap(colorType:Int){
         val landColorType= Array<Int>(30){0}
-        val imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
-        imgBtnArr[1]=imgbtn_map1
-        imgBtnArr[2]=imgbtn_map2
-        imgBtnArr[3]=imgbtn_map3
-        imgBtnArr[4]=imgbtn_map4
-        imgBtnArr[5]=imgbtn_map5
-        imgBtnArr[6]=imgbtn_map6
-        imgBtnArr[7]=imgbtn_map7
-        imgBtnArr[8]=imgbtn_map8
-        imgBtnArr[9]=imgbtn_map9
-        imgBtnArr[10]=imgbtn_map10
-        imgBtnArr[11]=imgbtn_map11
-        imgBtnArr[12]=imgbtn_map12
-        imgBtnArr[13]=imgbtn_map13
-        imgBtnArr[14]=imgbtn_map14
-        imgBtnArr[15]=imgbtn_map15
-        imgBtnArr[16]=imgbtn_map16
-        imgBtnArr[17]=imgbtn_map17
-        imgBtnArr[18]=imgbtn_map18
-        imgBtnArr[19]=imgbtn_map19
-        imgBtnArr[20]=imgbtn_map20
-        imgBtnArr[21]=imgbtn_map21
-        imgBtnArr[22]=imgbtn_map22
-        imgBtnArr[23]=imgbtn_map23
-        imgBtnArr[24]=imgbtn_map24
-        imgBtnArr[25]=imgbtn_map25
+        val imgBtnArr = arrayOf(imgbtn_map1,imgbtn_map1,imgbtn_map2,imgbtn_map3,imgbtn_map4,imgbtn_map5,imgbtn_map6,imgbtn_map7,imgbtn_map8,imgbtn_map9,imgbtn_map10,
+            imgbtn_map11,imgbtn_map12,imgbtn_map13,imgbtn_map14,imgbtn_map15,imgbtn_map16,imgbtn_map17,imgbtn_map18,imgbtn_map19,imgbtn_map20,
+            imgbtn_map21,imgbtn_map22,imgbtn_map23,imgbtn_map24,imgbtn_map25)
         if(colorType==1) {
             for(curIdx in 1..25) {
                 landColorType[curIdx]=landColorTypeCheck(mapString,loserId,curIdx)
@@ -131,36 +86,16 @@ class ChoiceMapActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choice_map)
-        val imgBtnArr = Array<ImageButton>(30){imgbtn_map1}
-        imgBtnArr[1]=imgbtn_map1
-        imgBtnArr[2]=imgbtn_map2
-        imgBtnArr[3]=imgbtn_map3
-        imgBtnArr[4]=imgbtn_map4
-        imgBtnArr[5]=imgbtn_map5
-        imgBtnArr[6]=imgbtn_map6
-        imgBtnArr[7]=imgbtn_map7
-        imgBtnArr[8]=imgbtn_map8
-        imgBtnArr[9]=imgbtn_map9
-        imgBtnArr[10]=imgbtn_map10
-        imgBtnArr[11]=imgbtn_map11
-        imgBtnArr[12]=imgbtn_map12
-        imgBtnArr[13]=imgbtn_map13
-        imgBtnArr[14]=imgbtn_map14
-        imgBtnArr[15]=imgbtn_map15
-        imgBtnArr[16]=imgbtn_map16
-        imgBtnArr[17]=imgbtn_map17
-        imgBtnArr[18]=imgbtn_map18
-        imgBtnArr[19]=imgbtn_map19
-        imgBtnArr[20]=imgbtn_map20
-        imgBtnArr[21]=imgbtn_map21
-        imgBtnArr[22]=imgbtn_map22
-        imgBtnArr[23]=imgbtn_map23
-        imgBtnArr[24]=imgbtn_map24
-        imgBtnArr[25]=imgbtn_map25
+        val imgBtnArr = arrayOf(imgbtn_map1,imgbtn_map1,imgbtn_map2,imgbtn_map3,imgbtn_map4,imgbtn_map5,imgbtn_map6,imgbtn_map7,imgbtn_map8,imgbtn_map9,imgbtn_map10,
+            imgbtn_map11,imgbtn_map12,imgbtn_map13,imgbtn_map14,imgbtn_map15,imgbtn_map16,imgbtn_map17,imgbtn_map18,imgbtn_map19,imgbtn_map20,
+            imgbtn_map21,imgbtn_map22,imgbtn_map23,imgbtn_map24,imgbtn_map25)
         val db=FirebaseDatabase.getInstance().getReference("test")
+        for(i in 1 .. 25){
+            imgBtnArr[i].visibility=View.INVISIBLE
+        }
         db.child("ttt").get().addOnSuccessListener {
-            loserId = it.child("loserId").value.toString().toInt()
-            winnerId = it.child("winnerId").value.toString().toInt()
+            loserId = intent.getIntExtra("loserId",0)
+            winnerId =intent.getIntExtra("winnerId",0)
             mapString = it.child("mapString").value.toString()
             playerNum = it.child("playerNum").value.toString().toInt()
             landNum = it.child("landNum").value.toString().toInt()
@@ -195,6 +130,8 @@ class ChoiceMapActivity : AppCompatActivity() {
                 mapString=MapHandling().UpdateMap(mapString,winnerId,imgNum)
                 db.child("ttt").child("mapString").setValue(mapString)
                 startActivity(intent)
+
+                overridePendingTransition(0,0)
                 finish()
             }//예 클릭시 실행
             when(v?.id){

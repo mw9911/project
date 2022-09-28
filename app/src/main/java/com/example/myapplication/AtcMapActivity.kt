@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_atc_map.*
+import kotlinx.android.synthetic.main.activity_atc_map.color_change_btn
 import kotlinx.android.synthetic.main.activity_atc_map.imgbtn_map1
 import kotlinx.android.synthetic.main.activity_atc_map.imgbtn_map10
 import kotlinx.android.synthetic.main.activity_atc_map.imgbtn_map11
@@ -37,6 +38,7 @@ import kotlinx.android.synthetic.main.activity_atc_map.imgbtn_map6
 import kotlinx.android.synthetic.main.activity_atc_map.imgbtn_map7
 import kotlinx.android.synthetic.main.activity_atc_map.imgbtn_map8
 import kotlinx.android.synthetic.main.activity_atc_map.imgbtn_map9
+import kotlinx.android.synthetic.main.activity_map.*
 
 class AtcMapActivity : AppCompatActivity() {
     val colorArr=arrayOf(R.color.red_color,R.color.green_color,R.color.orange_color)
@@ -57,16 +59,16 @@ class AtcMapActivity : AppCompatActivity() {
         return 1
     }
     fun setMap(){
-        val imgBtnArr = arrayOf(imgbtn_map1,imgbtn_map2,imgbtn_map3,imgbtn_map4,imgbtn_map5,imgbtn_map6,imgbtn_map7,imgbtn_map8,imgbtn_map9,imgbtn_map10,
+        val imgBtnArr = arrayOf(imgbtn_map1,imgbtn_map1,imgbtn_map2,imgbtn_map3,imgbtn_map4,imgbtn_map5,imgbtn_map6,imgbtn_map7,imgbtn_map8,imgbtn_map9,imgbtn_map10,
             imgbtn_map11,imgbtn_map12,imgbtn_map13,imgbtn_map14,imgbtn_map15,imgbtn_map16,imgbtn_map17,imgbtn_map18,imgbtn_map19,imgbtn_map20,
             imgbtn_map21,imgbtn_map22,imgbtn_map23,imgbtn_map24,imgbtn_map25)
-        for(i in landNum+1 .. 25){
-            imgBtnArr[i].visibility=View.INVISIBLE
+        for(i in 1 .. landNum){
+            imgBtnArr[i].visibility=View.VISIBLE
         }
     }
     fun showAtcMap(mapString:String, attackMapString : String, userId:Int, colorType:Int){
         val landColorType= Array<Int>(30){0}
-        val imgBtnArr = arrayOf(imgbtn_map1,imgbtn_map2,imgbtn_map3,imgbtn_map4,imgbtn_map5,imgbtn_map6,imgbtn_map7,imgbtn_map8,imgbtn_map9,imgbtn_map10,
+        val imgBtnArr = arrayOf(imgbtn_map1,imgbtn_map1,imgbtn_map2,imgbtn_map3,imgbtn_map4,imgbtn_map5,imgbtn_map6,imgbtn_map7,imgbtn_map8,imgbtn_map9,imgbtn_map10,
             imgbtn_map11,imgbtn_map12,imgbtn_map13,imgbtn_map14,imgbtn_map15,imgbtn_map16,imgbtn_map17,imgbtn_map18,imgbtn_map19,imgbtn_map20,
             imgbtn_map21,imgbtn_map22,imgbtn_map23,imgbtn_map24,imgbtn_map25)
         if(colorType==1) {
@@ -91,10 +93,13 @@ class AtcMapActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_atc_map)
         val db=FirebaseDatabase.getInstance().getReference("test")
-        val imgBtnArr = arrayOf(imgbtn_map1,imgbtn_map2,imgbtn_map3,imgbtn_map4,imgbtn_map5,imgbtn_map6,imgbtn_map7,imgbtn_map8,imgbtn_map9,imgbtn_map10,
+        val imgBtnArr = arrayOf(imgbtn_map1,imgbtn_map1,imgbtn_map2,imgbtn_map3,imgbtn_map4,imgbtn_map5,imgbtn_map6,imgbtn_map7,imgbtn_map8,imgbtn_map9,imgbtn_map10,
             imgbtn_map11,imgbtn_map12,imgbtn_map13,imgbtn_map14,imgbtn_map15,imgbtn_map16,imgbtn_map17,imgbtn_map18,imgbtn_map19,imgbtn_map20,
             imgbtn_map21,imgbtn_map22,imgbtn_map23,imgbtn_map24,imgbtn_map25)
         var colorType=1
+        for(i in 1 .. 25){
+            imgBtnArr[i].visibility=View.INVISIBLE
+        }
         for(i in 1..25){
             imgBtnArr[i].setOnClickListener(AttackMapButtonListener())
         }
@@ -119,6 +124,7 @@ class AtcMapActivity : AppCompatActivity() {
             back_btn_intent.setOnClickListener {
                 val intent= Intent(this, MapActivity::class.java)
                 startActivity(intent)
+                overridePendingTransition(0,0)
                 finish()
             }
         }
@@ -137,6 +143,7 @@ class AtcMapActivity : AppCompatActivity() {
 
                 db.child("ttt").child("opUserId").setValue(imgNum)
                 startActivity(intent)
+                overridePendingTransition(0,0)
                 finish()
             }//예 클릭시 실행
             when(v?.id){
@@ -170,6 +177,7 @@ class AtcMapActivity : AppCompatActivity() {
             if(landTypeNum==0){
                 Toast.makeText(this@AtcMapActivity,"현재 전투 중 입니다.",Toast.LENGTH_SHORT).show()
                 startActivity(bIntent)
+                overridePendingTransition(0,0)
                 finish()
             }else if(landTypeNum==1){
                 dlg.start("공격하시겠습니까?")
@@ -177,6 +185,7 @@ class AtcMapActivity : AppCompatActivity() {
             else{
                 Toast.makeText(this@AtcMapActivity,"본인 땅은 공격할 수 없습니다.",Toast.LENGTH_SHORT).show()
                 startActivity(bIntent)
+                overridePendingTransition(0,0)
                 finish()
             }
         }
