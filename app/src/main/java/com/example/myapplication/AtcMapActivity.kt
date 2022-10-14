@@ -11,6 +11,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_atc_map.*
 import kotlinx.android.synthetic.main.activity_atc_map.color_change_btn
 import kotlinx.android.synthetic.main.activity_atc_map.imgbtn_map1
@@ -48,6 +49,13 @@ class AtcMapActivity : AppCompatActivity() {
     var mapString:String=""
     var playerNum :Int=1
     var landNum:Int=1
+    private fun initFirebase() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task->
+            if(task.isSuccessful){
+                //tokenTextView.text=task.result;
+            }
+        }
+    }
     fun landColorTypeCheck(mapString:String, attackMapString: String,userId: Int,chkIdx:Int) : Int{
         val attackIm=attackMapString.chunked(1)
         val tmp= Integer.parseInt(attackIm[chkIdx-1])
